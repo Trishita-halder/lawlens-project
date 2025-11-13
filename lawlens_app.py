@@ -5,7 +5,13 @@ import os
 import requests
 import json
 from dotenv import load_dotenv
-from googletrans import Translator
+
+# Try multiple translation libraries for compatibility
+try:
+    from googletrans import Translator
+except ImportError:
+    st.warning("Googletrans not available, using fallback translation")
+    Translator = None
 
 # Load environment variables
 load_dotenv()
